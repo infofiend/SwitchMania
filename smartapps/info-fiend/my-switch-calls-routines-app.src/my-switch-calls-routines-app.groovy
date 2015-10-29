@@ -23,6 +23,7 @@
 definition(
     name: "My Switch Calls Routines App",
     namespace: "info_fiend",
+    author: "Anthony Pastor",
     description: "Child App to 'Parent App for Big Switch' that uses a virtual/or physical switch to run hello home phrases.",
     category: "My Apps",
     parent: "info_fiend:Switch Mania",
