@@ -30,7 +30,7 @@ definition(
 
 preferences {
 	section("Create Virtual Switch") {
-		input "switchLabel", "text", title: "Switch Label", required: true
+		input "switchLabel", "text", title: "Switch Label", required: true, submitOnChange: true
         input "switchType", "enum", title: "Type: On/Off or Momentary?", multiple: false, required: true, metadata: [values: ["On/Off Button Tile", "Momentary Button Tile"]], defaultValue: "On/Off Button Tile"  
 	}
 }
@@ -63,7 +63,7 @@ def initialize() {
 }
 
 def uninstalled() {
-    removeChildDevices(getChildDevices())
+    removeChildDevices(getAllChildDevices())
 }
 
 private removeChildDevices(delete) {

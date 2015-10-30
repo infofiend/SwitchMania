@@ -141,6 +141,17 @@ private def pageOptions() {
 	}
 }
 
+
+def askForSwitches() {
+
+	def switchList = []
+        switchList = getAllChildDevices()
+    
+    return switchList
+
+}
+
+
 private def TRACE(message) {
     log.debug message
 }

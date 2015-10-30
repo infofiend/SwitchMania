@@ -23,7 +23,6 @@
 definition(
     name: "My Switch Calls Routines App",
     namespace: "info_fiend",
-    author: "Anthony Pastor",
     description: "Child App to 'Parent App for Big Switch' that uses a virtual/or physical switch to run hello home phrases.",
     category: "My Apps",
     parent: "info_fiend:Switch Mania",
@@ -40,8 +39,13 @@ preferences {
 	
 def getPref() {    
     dynamicPage(name: "getPref", title: "Choose Switch and Phrases", install:true, uninstall: true) {
+    
+    	def mySwitches = []
+        mySwitches = parent.askForSwitches()
+        log.debug "List of Switches from SwitchMania = ${mySwitches}"
+        
 	    section("Choose a switch to use...") {
-			input "controlSwitch", "capability.switch", title: "Switch", multiple: false, required: true
+			input "controlSwitch", "capability.switch", title: "Choose switch to use:", multiple: false, required: true
 	    }
     	def phrases = location.helloHome?.getPhrases()*.label
 			if (phrases) {
@@ -69,6 +73,17 @@ def updated() {
 	unsubscribe()
 	subscribe(controlSwitch, "switch", "switchHandler")
 }
+
+def uninstalled() {
+    removeChildDevices(getAllChildDevices())
+}
+
+private removeChildDevices(delete) {
+    delete.each {
+        deleteChildDevice(it.deviceNetworkId)
+    }
+}
+
 
 def switchHandler(evt) {
 	if (evt.value == "on") {
