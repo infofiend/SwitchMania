@@ -4,6 +4,8 @@
  *  Copyright 2015 Anthony Pastor
  *  Version 1.0 10/28/15
  *
+ *  Based IN LARGE PART on the "Big Switch for Hello Home Phrases" SmartApp by the esteemed Tim Slagle
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  *  in compliance with the License. You may obtain a copy of the License at:
  *
