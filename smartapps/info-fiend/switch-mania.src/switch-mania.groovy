@@ -100,7 +100,7 @@ private def	pageRoutines() {
     if (state.installed == null) {
     // First run - initialize state
         state.installed = false
-        return pageChildApps()
+        return pageRoutines()
     }
     
 	def pageProperties = [
