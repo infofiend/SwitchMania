@@ -29,9 +29,9 @@ definition(
 
 
 preferences {
-	section("Create Virtual Switch") {
+	section("Create a Virtual Switch (Be sure to install all of the device types).") {
 		input "switchLabel", "text", title: "Switch Label", required: true, submitOnChange: true
-        input "switchType", "enum", title: "Type: On/Off or Momentary?", multiple: false, required: true, metadata: [values: ["On/Off Button Tile", "Momentary Button Tile"]], defaultValue: "On/Off Button Tile"  
+        input "switchType", "enum", title: "What kind of Virtual Switch do you want?", multiple: false, required: true, metadata: [values: ["On/Off Button Tile", "Momentary Button Tile", "Virtual Dimmer", "Simulated Presence Sensor"]], defaultValue: "On/Off Button Tile"  
 	}
 }
 
@@ -56,9 +56,13 @@ def initialize() {
 	if (!existing) {
     	if (switchType == "On/Off Button Tile") {
 	    	def childDevice = addChildDevice("smartthings", "On/Off Button Tile", deviceId, null, [label: switchLabel])           
-	    } else {
+	    } else if (switchType == "Momentary Button Tile") {
 			def childDevice = addChildDevice("smartthings", "Momentary Button Tile", deviceId, null, [label: switchLabel])    
-	    }
+	    } else if (switchType == "Dimmer Switch") {
+			def childDevice = addChildDevice("smartthings", "Virtual Dimmer", deviceId, null, [label: switchLabel])    
+	    } else if (switchType == "Simulated Presence Sensor") {
+			def childDevice = addChildDevice("infofiend", "Simulated Presence Sensor", deviceId, null, [label: switchLabel])    
+		}
 	}
 }
 

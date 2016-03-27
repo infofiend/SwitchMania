@@ -87,7 +87,7 @@ private def	pageSwitches() {
     return dynamicPage(pageProperties) {
 
 		section {
-			app(name: "childSwitches", appName: "My Virtual Switch Creator", namespace: "info_fiend", title: "Create a new virtual switch (on/off or momentary).", multiple: true)
+			app(name: "childSwitches", appName: "My Virtual Switch Creator", namespace: "info_fiend", title: "Create a new virtual switch (Choose from On/Off Button Tile, Momentary Button Tile, Virtual Dimmer, or Simulated Presence Sensor).", multiple: true)
 	    }
 	}
 }
