@@ -16,3 +16,4 @@ You need to install all 3 apps in the IDE.
 You should also install SmartThings' "Momentary Button Tile" and Michael Struck's dimmer switch.  A copy of both of these device handlers can be found in this repo.
 
 
+And, if you feel like making a donation for these community efforts, it would be greatly appreciated: https://www.paypal.me/anthonypastor . Thanks!
